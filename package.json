@@ -1,5 +1,5 @@
 {
-  "name": "rocket.css",
+  "name": "@tihhgoncalves/rocket.css",
   "version": "1.0.0",
   "description": "Framework CSS/SCSS moderno com componentes, classes utilitárias, sistema de cores e layouts responsivos",
   "main": "dist/rocket.css",
