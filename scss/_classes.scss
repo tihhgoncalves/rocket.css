@@ -1,0 +1,50 @@
+@use 'classes/alert';  
+@use 'classes/borders';  
+@use 'classes/display';  
+@use 'classes/flex';  
+@use 'classes/float';  
+@use 'classes/gap';
+@use 'classes/margin';  
+@use 'classes/order';  
+@use 'classes/padding';  
+@use 'classes/position';
+@use 'classes/svg';  
+@use 'classes/text';
+@use 'classes/width';
+@use 'classes/scale';
+
+.border-topo {
+    border-top: 1px solid var(--cor-cinza-claro3);
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.d-none {
+    display: none;
+}
+.d-block {
+    display: block;
+}
+
+.border-size-1 {
+    border-width: 1px !important;
+    border-style: solid !important;
+}
+.border-size-0 {
+    border-width: 0 !important;
+}
+
+.border-radius-3 {
+    border-radius: 12px !important;
+}
+
+.rk-cursor-pointer {
+    cursor: pointer;
+}
+

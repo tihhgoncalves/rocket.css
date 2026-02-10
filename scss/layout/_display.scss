@@ -1,0 +1,70 @@
+@use "sass:map";
+@use "../breakpoints" as bp;
+
+// Classes base de display
+.rk-d-none {
+    display: none;
+}
+
+.rk-d-block {
+    display: block;
+}
+
+.rk-d-flex {
+    display: flex;
+}
+
+.rk-d-grid {
+    display: grid;
+}
+
+.rk-d-inline {
+    display: inline;
+}
+
+.rk-d-inline-block {
+    display: inline-block;
+}
+
+// Classes responsivas de display
+$rk-breakpoints-order: (xxl, xl, lg, md, sm, xs);
+
+@each $size in $rk-breakpoints-order {
+    $range: map.get(bp.$rk-breakpoints, $size);
+    $max: map.get($range, max);
+
+    @media (max-width: $max) {
+        .rk-d-none-#{$size} {
+            display: none !important;
+        }
+
+        .rk-d-block-#{$size} {
+            display: block !important;
+        }
+
+        .rk-d-flex-#{$size} {
+            display: flex !important;
+        }
+
+        .rk-d-grid-#{$size} {
+            display: grid !important;
+        }
+
+        .rk-d-inline-#{$size} {
+            display: inline !important;
+        }
+
+        .rk-d-inline-block-#{$size} {
+            display: inline-block !important;
+        }
+    }
+}
+
+// Aliases para compatibilidade com classes antigas
+.d-none {
+    @extend .rk-d-none;
+}
+
+.d-block {
+    @extend .rk-d-block;
+}

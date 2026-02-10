@@ -1,0 +1,90 @@
+
+
+
+
+#listaItens.playtables .playtable,
+#listaItensInstalados .clone .playtable,
+.listaPlaytablesNovaTurma .playtable {
+
+    background-color: red;
+    gap: 5px;
+
+    .info {
+        font-weight: normal;
+    }
+
+    &.active {
+        overflow: visible;
+        font-weight: normal;
+        position: relative;
+        font-weight: 800;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 40px;
+            background-image: url(/img/atividades/icone-ativo.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 10px;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .info {
+            font-weight: bold;
+        }
+
+    }
+}
+
+#listaItensInstalados,
+#selecionarPlaytables, 
+.listaPlaytablesNovaTurma{
+        h5{
+            font-size: 16px;
+        }
+
+        .playtables,
+        &.playtables{
+            margin-top: 0;
+
+            .playtable{
+                padding: 10px;
+                margin-bottom: 15px;
+                cursor: pointer;
+                background-color: #FFF;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                border: 0;
+
+                &.playtable-turmas{
+                    border:  1px solid #ccc;
+                }
+
+                &.playtable-atividades{
+                    border: 0;
+                }
+                
+
+                *,
+                *::before,
+                *::after {
+                box-sizing: border-box;
+                }
+
+                img{
+                    height: 40px;
+                    width: 40px;
+                    background-color: rgb(255,215,0,1);
+                    border: 1px solid #c9c9c9;
+                }
+            }
+        }
+    }

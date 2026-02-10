@@ -1,0 +1,8 @@
+@use "form/_btn.scss";
+@use "form/_label.scss";
+@use "form/_input.scss";
+
+.form-control {
+    border-color: var(--cor-cinza2);
+    border-radius: 6px;
+}

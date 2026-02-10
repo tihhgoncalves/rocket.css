@@ -1,0 +1,61 @@
+// Bootstrap FileInput Customizations
+.file-input {
+    .file-preview-frame{
+        padding-bottom: 50px;
+        .kv-file-content {}
+
+        .file-thumbnail-footer{
+            .file-actions{
+                display: flex;
+                justify-content: center;
+                
+                .file-footer-buttons{
+                    display: flex;
+                    gap: 5px;
+                    justify-content: center;
+                }
+            
+            }
+        }
+    }
+}
+
+.kv-file-edit,
+.kv-file-remove {
+    border-radius: 25px;
+    width: 59px;
+    height: 40px;
+}
+.kv-file-edit {
+    
+    border-color: #337ab7;
+
+    i{
+        color: #337ab7;
+    }
+    &:hover {
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        
+        i {
+            color: #fff !important;
+        }
+    }
+}
+.kv-file-remove {
+    
+    border-color: #d9534f;
+
+    i{
+        color: #d9534f;
+    }
+    &:hover {
+        
+        background-color: #d9534f !important;
+        border-color: #c9302c !important;
+
+        i {
+            color: #fff !important;
+        }
+    }
+}

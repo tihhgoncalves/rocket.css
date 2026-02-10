@@ -1,0 +1,41 @@
+@use "sass:map";
+@use "../_breakpoints" as bp;
+
+// Valores padrão de width
+$rk-widths: (
+  25: 25%,
+  33: 33.3333%,
+  50: 50%,
+  66: 66.6667%,
+  75: 75%,
+  100: 100%,
+  none: auto
+);
+
+// Gera classes padrão (sem breakpoint)
+@each $key, $value in $rk-widths {
+  .rk-w-#{$key} {
+    width: #{$value} !important;
+  }
+}
+
+// Gera classes com breakpoints: rk-w-50-xs, rk-w-none-lg etc
+@each $size, $range in bp.$rk-breakpoints {
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @each $key, $value in $rk-widths {
+      .rk-w-#{$key}-#{$size} {
+        width: #{$value} !important;
+      }
+    }
+  }
+}
+
+// Min width
+.rk-min-w-0     { min-width: 0 !important; }
+.rk-min-w-full  { min-width: 100% !important; }
+
+// Max width
+.rk-max-w-full  { max-width: 100% !important; }
+.rk-max-w-none  { max-width: none !important; }

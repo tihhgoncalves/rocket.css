@@ -1,0 +1,64 @@
+@use "sass:meta";
+@use "sass:map";
+@use "../_breakpoints" as bp;
+
+// Valores possíveis de padding
+$padding-values: (
+  0: 0,
+  1: 4px,
+  2: 8px,
+  3: 16px,
+  4: 24px,
+  5: 48px,
+  6: 64px,
+  7: 80px,
+  8: 96px,
+  auto: auto
+);
+
+// Direções de padding ("" = todos os lados, "x" = left/right, etc.)
+$padding-directions: (
+  "": "",
+  "t": "-top",
+  "r": "-right",
+  "b": "-bottom",
+  "l": "-left",
+  "x": ("-left", "-right"),
+  "y": ("-top", "-bottom")
+);
+
+// Classes padrão (sem breakpoint)
+@each $key, $value in $padding-values {
+  @each $dir, $suffix in $padding-directions {
+    .rk-p#{$dir}-#{$key} {
+      @if meta.type-of($suffix) == "list" {
+        @each $side in $suffix {
+          padding#{$side}: $value !important;
+        }
+      } @else {
+        padding#{$suffix}: $value !important;
+      }
+    }
+  }
+}
+
+// Responsivos com base no $rk-breakpoints
+@each $size, $range in bp.$rk-breakpoints {
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @each $key, $value in $padding-values {
+      @each $dir, $suffix in $padding-directions {
+        .rk-p#{$dir}-#{$key}-#{$size} {
+          @if meta.type-of($suffix) == "list" {
+            @each $side in $suffix {
+              padding#{$side}: $value !important;
+            }
+          } @else {
+            padding#{$suffix}: $value !important;
+          }
+        }
+      }
+    }
+  }
+}

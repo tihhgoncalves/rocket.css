@@ -1,0 +1,12 @@
+    .card {
+        position: relative;
+        border-radius: 0.8em;
+        background: var(--cor-branca);
+        color: var(--cor-cinza);
+        overflow: hidden;
+        padding: var(--espacamento2);
+        margin: var(--espacamento4) 0px;
+        -webkit-box-shadow: var(--box-shadow-1);
+        -moz-box-shadow: var(--box-shadow-1);
+        box-shadow: var(--box-shadow-1);
+    }

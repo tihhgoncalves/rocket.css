@@ -1,0 +1,34 @@
+@use "../breakpoints" as bp;
+@use "sass:map";
+
+// Mapa de ordens
+$orders: (
+	0: 0,
+	1: 1,
+	2: 2,
+	3: 3,
+	4: 4,
+	5: 5,
+	first: -1,
+	last: 9999
+);
+
+// Geração padrão
+@each $key, $value in $orders {
+	.rk-order-#{$key} {
+		order: #{$value} !important;
+	}
+}
+
+// Geração responsiva
+@each $bp-name, $range in bp.$rk-breakpoints {
+	$max: map.get($range, max);
+
+	@media (max-width: $max) {
+		@each $key, $value in $orders {
+			.rk-order-#{$key}-#{$bp-name} {
+				order: #{$value} !important;
+			}
+		}
+	}
+}

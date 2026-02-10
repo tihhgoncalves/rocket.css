@@ -1,0 +1,102 @@
+.rk-btn {
+
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+
+
+    &.rk-btn-verde {
+        background: var(--rk-cor-verde) !important;
+        color: var(--rk-cor-branco) !important;
+
+        &:hover,
+        &:focus {
+            background: var(--rk-cor-verde-claro) !important;
+        }
+    }
+
+    &.rk-btn-vermelho {
+        background: var(--rk-cor-vermelho) !important;
+        color: var(--rk-cor-branco) !important;
+
+        &:hover,
+        &:focus {
+            background: var(--rk-cor-vermelho-claro) !important;
+        }
+    }
+
+    &.rk-btn-azul {
+        background: var(--rk-cor-azul) !important;
+        color: var(--rk-cor-branco) !important;
+
+        &:hover,
+        &:focus {
+            background: var(--rk-cor-azul-claro) !important;
+        }
+    }
+
+    &.rk-btn-amarelo {
+        background: var(--rk-cor-amarelo) !important;
+        color: var(--rk-cor-branco) !important;
+
+        &:hover,
+        &:focus {
+            background: var(--rk-cor-amarelo-claro) !important;
+        }
+    }
+
+    &.rk-btn-roxo {
+        background: var(--rk-cor-roxo) !important;
+        color: var(--rk-cor-branco) !important;
+
+        &:hover,
+        &:focus {
+            background: var(--rk-cor-roxo-claro) !important;
+        }
+    }
+
+    &.rk-btn-preto {
+        background: var(--rk-cor-preto) !important;
+        color: #fff !important;
+
+        &:hover,
+        &:focus {
+            background: #444 !important;
+        }
+    }
+
+    &.rk-btn-redondo {
+        border-radius: 1.5em;
+        padding: 8px var(--espacamento2);
+    }
+    
+    &.rk-btn-azul-escuro,
+    &.rk-btn-azul {
+        background: var(--rk-cor-azul) !important;
+        color: #fff !important;
+
+        &:hover,
+        &:focus {
+            background: var(--rk-cor-azul-claro) !important;
+        }
+    }
+
+    &.rk-btn-redondo {
+        border-radius: 1.5em;
+        padding: 8px var(--espacamento2);
+    }
+
+    svg {
+        max-height: 15px;
+        width: auto;
+
+        fill: white;
+
+        path {
+            fill: white;
+        }
+
+    }
+
+}

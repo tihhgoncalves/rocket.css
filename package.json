@@ -1,0 +1,12 @@
+{
+  "name": "rocket.css",
+  "version": "1.0.0",
+  "description": "Projeto de Helpers de estilo CSS utilizado nos projetos da Rocket Produtora Digital",
+  "main": "dist/rocket.css",
+  "scripts": {
+    "sass:build": "node .build/scripts/sass-build.js",
+    "sass:watch": "sass --load-path=node_modules --quiet-deps --silence-deprecation=import scss/index.scss css/rocket.css --watch"
+  },
+  "author": "Tihh Gonçalves",
+  "license": "MIT"
+}

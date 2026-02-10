@@ -1,0 +1,180 @@
+@use "../breakpoints" as bp;
+@use "../colors" as colors;
+@use "sass:map";
+@use "sass:string";
+
+// Alinhamento de texto
+$text-alignments: (
+  start: left,
+  center: center,
+  end: right,
+  justify: justify
+);
+
+// Geração padrão
+@each $key, $value in $text-alignments {
+  .rk-text-#{$key} {
+    text-align: #{$value} !important;
+  }
+}
+
+// Geração responsiva
+@each $bp-name, $range in bp.$rk-breakpoints {
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @each $key, $value in $text-alignments {
+      .rk-text-#{$key}-#{$bp-name} {
+        text-align: #{$value} !important;
+      }
+    }
+  }
+}
+
+// Transformações
+$text-transforms: (
+  uppercase: uppercase,
+  lowercase: lowercase,
+  capitalize: capitalize
+);
+
+@each $key, $value in $text-transforms {
+  .rk-text-#{$key} {
+    text-transform: #{$value} !important;
+  }
+
+  @each $bp-name, $range in bp.$rk-breakpoints {
+    $max: map.get($range, max);
+
+    @media (max-width: $max) {
+      .rk-text-#{$key}-#{$bp-name} {
+        text-transform: #{$value} !important;
+      }
+    }
+  }
+}
+
+// Font weight e estilo
+$text-weights: (
+  bold: bold,
+  normal: normal,
+  light: 300,
+  italic: italic
+);
+
+@each $key, $value in $text-weights {
+  .rk-text-#{$key} {
+    @if $key == italic {
+      font-style: #{$value} !important;
+    } @else {
+      font-weight: #{$value} !important;
+    }
+  }
+
+  @each $bp-name, $range in bp.$rk-breakpoints {
+    $max: map.get($range, max);
+
+    @media (max-width: $max) {
+      .rk-text-#{$key}-#{$bp-name} {
+        @if $key == italic {
+          font-style: #{$value} !important;
+        } @else {
+          font-weight: #{$value} !important;
+        }
+      }
+    }
+  }
+}
+
+// Quebra de texto
+.rk-text-wrap {
+  white-space: normal !important;     /* desfaz qualquer nowrap herdado */
+  overflow-wrap: anywhere;            /* quebra URLs/palavras muito longas */
+  word-break: normal;                 /* mantém comportamento padrão */
+}
+
+.rk-text-nowrap { white-space: nowrap !important; }
+.rk-text-break  { word-break: break-word !important; overflow-wrap: break-word !important; }
+.rk-text-break-line {
+  display: block !important;
+  width: 100% !important;
+}
+
+// Font-size com responsivo
+$text-sizes: (
+  1: 10px,
+  2: 12px,
+  3: 14px,
+  4: 16px,
+  5: 20px,
+  6: 24px,
+  7: 32px
+);
+
+@each $key, $size in $text-sizes {
+  .rk-text-#{$key} {
+    font-size: $size !important;
+  }
+
+  @each $bp-name, $range in bp.$rk-breakpoints {
+    $max: map.get($range, max);
+
+    @media (max-width: $max) {
+      .rk-text-#{$key}-#{$bp-name} {
+        font-size: $size !important;
+      }
+    }
+  }
+}
+
+// Alinhamento vertical
+$vertical-alignments: (
+  top: top,
+  middle: middle,
+  bottom: bottom,
+  baseline: baseline,
+  text-top: text-top,
+  text-bottom: text-bottom
+);
+
+// Geração padrão
+@each $key, $value in $vertical-alignments {
+  .rk-vertical-#{$key} {
+    vertical-align: #{$value} !important;
+  }
+}
+
+// Geração responsiva
+@each $bp-name, $range in bp.$rk-breakpoints {
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @each $key, $value in $vertical-alignments {
+      .rk-vertical-#{$key}-#{$bp-name} {
+        vertical-align: #{$value} !important;
+      }
+    }
+  }
+}
+
+// Cores de texto usando o sistema centralizado
+// Geração padrão das cores
+@each $key, $value in colors.$rk-colors {
+  .rk-text-#{("" + $key)} {
+    color: #{$value} !important;
+  }
+}
+
+// Geração responsiva das cores
+@each $bp-name, $range in bp.$rk-breakpoints {
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @each $key, $value in colors.$rk-colors {
+      .rk-text-#{("" + $key)}-#{$bp-name} {
+        color: #{$value} !important;
+      }
+    }
+  }
+}
+

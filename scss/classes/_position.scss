@@ -1,0 +1,35 @@
+@use "sass:map";
+@use "../_breakpoints" as bp;
+
+// Mapa de valores de position
+$position-values: (
+  static: static,
+  relative: relative,
+  absolute: absolute,
+  fixed: fixed,
+  sticky: sticky
+);
+
+// Classes padrão
+@each $key, $value in $position-values {
+  .rk-position-#{$key} {
+    position: #{$value} !important;
+  }
+}
+
+// Ordem dos breakpoints invertida para garantir que o menor (xs) venha por último no CSS
+$rk-breakpoints-order: (xxl, xl, lg, md, sm, xs);
+
+// Classes responsivas
+@each $size in $rk-breakpoints-order {
+  $range: map.get(bp.$rk-breakpoints, $size);
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @each $key, $value in $position-values {
+      .rk-position-#{$key}-#{$size} {
+        position: #{$value} !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.swal2-actions{
+    button{
+        height: 40px;
+        padding: 5px 15px;
+        border-radius: 8px;
+        font-size: 16px!important;
+
+        &.swal2-confirm{
+            background-color: var(--rk-cor-verde)!important;
+
+            &:hover{
+                background-color: var(--rk-cor-verde-claro)!important;
+            }
+        }
+
+        &.swal2-cancel{
+            background-color: var(--rk-cor-vermelho)!important;
+
+            &:hover{
+                background-color: var(--rk-cor-vermelho-claro)!important;
+            }
+        }
+    }
+}

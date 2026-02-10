@@ -1,0 +1,144 @@
+@use "sass:map";
+@use "vars" as vars;
+
+
+// =====================================
+// Rocket.css - Colors centralizados
+// =====================================
+
+// Mapa de cores (nome em inglês usando funções SCSS)
+$rk-colors: (
+  // Cores base
+  black: vars.rk-get-base-color(black),
+  white: vars.rk-get-base-color(white),
+  green: vars.rk-get-base-color(green),
+  red: vars.rk-get-base-color(red),
+  blue: vars.rk-get-base-color(blue),
+  yellow: vars.rk-get-base-color(yellow),
+  purple: vars.rk-get-base-color(purple),
+  
+  // Tons claros
+  light-green: vars.rk-lighten(green, 10%),
+  light-red: vars.rk-lighten(red, 10%),
+  light-blue: vars.rk-lighten(blue, 10%),
+  light-yellow: vars.rk-lighten(yellow, 10%),
+  light-purple: vars.rk-lighten(purple, 10%),
+  
+  // Tons escuros
+  dark-green: vars.rk-darken(green, 15%),
+  dark-red: vars.rk-darken(red, 15%),
+  dark-blue: vars.rk-darken(blue, 15%),
+  dark-yellow: vars.rk-darken(yellow, 15%),
+  dark-purple: vars.rk-darken(purple, 15%),
+  
+  // Tons muito claros
+  lighter-green: vars.rk-lighten(green, 20%),
+  lighter-red: vars.rk-lighten(red, 20%),
+  lighter-blue: vars.rk-lighten(blue, 20%),
+  lighter-yellow: vars.rk-lighten(yellow, 20%),
+  lighter-purple: vars.rk-lighten(purple, 20%),
+  
+  // Tons muito escuros
+  darker-green: vars.rk-darken(green, 25%),
+  darker-red: vars.rk-darken(red, 25%),
+  darker-blue: vars.rk-darken(blue, 25%),
+  darker-yellow: vars.rk-darken(yellow, 25%),
+  darker-purple: vars.rk-darken(purple, 25%),
+  
+  // Variações de opacidade do preto
+  black-90: vars.rk-alpha(black, 0.9),
+  black-80: vars.rk-alpha(black, 0.8),
+  black-70: vars.rk-alpha(black, 0.7),
+  black-60: vars.rk-alpha(black, 0.6),
+  black-50: vars.rk-alpha(black, 0.5),
+  black-40: vars.rk-alpha(black, 0.4),
+  black-30: vars.rk-alpha(black, 0.3),
+  black-20: vars.rk-alpha(black, 0.2),
+  black-10: vars.rk-alpha(black, 0.1),
+  
+  // Variações de opacidade do branco
+  white-90: vars.rk-alpha(white, 0.9),
+  white-80: vars.rk-alpha(white, 0.8),
+  white-70: vars.rk-alpha(white, 0.7),
+  white-60: vars.rk-alpha(white, 0.6),
+  white-50: vars.rk-alpha(white, 0.5),
+  white-40: vars.rk-alpha(white, 0.4),
+  white-30: vars.rk-alpha(white, 0.3),
+  white-20: vars.rk-alpha(white, 0.2),
+  white-10: vars.rk-alpha(white, 0.1),
+  
+  // Escala de cinzas baseada no preto
+  gray-900: vars.rk-lighten(black, 5%),
+  gray-800: vars.rk-lighten(black, 10%),
+  gray-700: vars.rk-lighten(black, 20%),
+  gray-600: vars.rk-lighten(black, 30%),
+  gray-500: vars.rk-lighten(black, 40%),
+  gray-400: vars.rk-lighten(black, 50%),
+  gray-300: vars.rk-lighten(black, 60%),
+  gray-200: vars.rk-lighten(black, 70%),
+  gray-100: vars.rk-lighten(black, 80%),
+  
+  // Cores dessaturadas (mais neutras)
+  muted-green: vars.rk-desaturate(green, 30%),
+  muted-red: vars.rk-desaturate(red, 30%),
+  muted-blue: vars.rk-desaturate(blue, 30%),
+  muted-yellow: vars.rk-desaturate(yellow, 30%),
+  muted-purple: vars.rk-desaturate(purple, 30%)
+);
+
+// =====================================
+// Funções auxiliares
+// =====================================
+
+@function rk-color($name) {
+  @return map.get($rk-colors, $name);
+}
+
+// Função para verificar se uma cor existe
+@function rk-color-exists($name) {
+  @return map.has-key($rk-colors, $name);
+}
+
+// Função para obter todas as cores
+@function rk-get-colors() {
+  @return $rk-colors;
+}
+
+
+// =====================================
+// Mixins auxiliares
+// =====================================
+
+@mixin rk-text-color($color) {
+  @if rk-color-exists($color) {
+    color: rk-color($color) !important;
+  } @else {
+    @error "Cor '#{$color}' não encontrada no mapa de cores.";
+  }
+}
+
+@mixin rk-bg-color($color) {
+  @if rk-color-exists($color) {
+    background-color: rk-color($color) !important;
+  } @else {
+    @error "Cor '#{$color}' não encontrada no mapa de cores.";
+  }
+}
+
+@mixin rk-border-color($color) {
+  @if rk-color-exists($color) {
+    border-color: rk-color($color) !important;
+  } @else {
+    @error "Cor '#{$color}' não encontrada no mapa de cores.";
+  }
+}
+
+
+
+// =====================================
+// Exemplo de uso:
+// =====================================
+// color: rk-color(green);               // Retorna var(--rk-cor-verde)
+// @include rk-text-color(blue);         // Aplica cor azul ao texto
+// @include rk-bg-color(red);            // Aplica cor vermelha ao fundo
+// @include rk-border-color(purple);     // Aplica cor roxa à borda

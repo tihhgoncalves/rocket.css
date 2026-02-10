@@ -1,0 +1,56 @@
+@use "../_breakpoints" as *;
+
+@media (min-width: 992px) {
+  .sidebar:not(.toggled) {
+    .sidebar-content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      z-index: 1000;
+      overflow-y: auto;
+      z-index: 1;
+    }
+  }
+}
+
+@include rk-media(xs) {
+
+  body.sidebar-toggled{
+
+    .main {
+      .navbar.menuGeral {
+        position: relative;
+        z-index: 1100;
+
+        i.hamburger {
+          background-color: #FFFFFF;
+
+          &:after,
+          &:before {
+            background-color: #FFFFFF;
+          }
+        }
+      }
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1099;
+
+      &.toggled {
+        width: 98%;
+        min-width: initial;
+        max-width: initial;
+
+
+      }
+    }
+
+  }
+}

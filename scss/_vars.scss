@@ -1,0 +1,112 @@
+/** CORES **/
+
+@use "sass:color";
+@use "sass:map";
+
+// =====================================
+// Cores base do sistema (valores SCSS)
+// =====================================
+
+$rk-base-colors: (
+  black: #222222,
+  white: #FFFFFF,
+  green: #2c9338,
+  red: #d73d32,
+  blue: #394055,
+  yellow: #ff9800,
+  purple: #9c27b0
+);
+
+// =====================================
+// Funções para manipular cores
+// =====================================
+
+@function rk-get-base-color($name) {
+  @return map.get($rk-base-colors, $name);
+}
+
+// Função para criar variações de opacidade
+@function rk-alpha($color-name, $alpha: 1) {
+  $base-color: rk-get-base-color($color-name);
+  @return color.change($base-color, $alpha: $alpha);
+}
+
+// Função para criar tons mais claros
+@function rk-lighten($color-name, $amount: 10%) {
+  $base-color: rk-get-base-color($color-name);
+  @return color.adjust($base-color, $lightness: $amount);
+}
+
+// Função para criar tons mais escuros
+@function rk-darken($color-name, $amount: 10%) {
+  $base-color: rk-get-base-color($color-name);
+  @return color.adjust($base-color, $lightness: -$amount);
+}
+
+// Função para criar tons dessaturados
+@function rk-desaturate($color-name, $amount: 10%) {
+  $base-color: rk-get-base-color($color-name);
+  @return color.adjust($base-color, $saturation: -$amount);
+}
+
+// =====================================
+// Geração das variáveis CSS
+// =====================================
+
+:root {
+  // Cores base
+  --rk-cor-preto:      #{rk-get-base-color(black)};
+  --rk-cor-branco:     #{rk-get-base-color(white)};
+  --rk-cor-verde:      #{rk-get-base-color(green)};
+  --rk-cor-vermelho:   #{rk-get-base-color(red)};
+  --rk-cor-azul:       #{rk-get-base-color(blue)};
+  --rk-cor-amarelo:    #{rk-get-base-color(yellow)};
+  --rk-cor-roxo:       #{rk-get-base-color(purple)};
+
+  // Tons claros
+  --rk-cor-verde-claro:       #{rk-lighten(green, 10%)};
+  --rk-cor-vermelho-claro:    #{rk-lighten(red, 10%)};
+  --rk-cor-azul-claro:        #{rk-lighten(blue, 10%)};
+  --rk-cor-amarelo-claro:     #{rk-lighten(yellow, 10%)};
+  --rk-cor-roxo-claro:        #{rk-lighten(purple, 10%)};
+
+  // Tons escuros
+  --rk-cor-verde-escuro:      #{rk-darken(green, 15%)};
+  --rk-cor-vermelho-escuro:   #{rk-darken(red, 15%)};
+  --rk-cor-azul-escuro:       #{rk-darken(blue, 15%)};
+  --rk-cor-amarelo-escuro:    #{rk-darken(yellow, 15%)};
+  --rk-cor-roxo-escuro:       #{rk-darken(purple, 15%)};
+
+  // Variações de opacidade do preto
+  --rk-cor-preto-90:    #{rk-alpha(black, 0.9)};
+  --rk-cor-preto-80:    #{rk-alpha(black, 0.8)};
+  --rk-cor-preto-70:    #{rk-alpha(black, 0.7)};
+  --rk-cor-preto-60:    #{rk-alpha(black, 0.6)};
+  --rk-cor-preto-50:    #{rk-alpha(black, 0.5)};
+  --rk-cor-preto-40:    #{rk-alpha(black, 0.4)};
+  --rk-cor-preto-30:    #{rk-alpha(black, 0.3)};
+  --rk-cor-preto-20:    #{rk-alpha(black, 0.2)};
+  --rk-cor-preto-10:    #{rk-alpha(black, 0.1)};
+
+  // Variações de opacidade do branco
+  --rk-cor-branco-90:   #{rk-alpha(white, 0.9)};
+  --rk-cor-branco-80:   #{rk-alpha(white, 0.8)};
+  --rk-cor-branco-70:   #{rk-alpha(white, 0.7)};
+  --rk-cor-branco-60:   #{rk-alpha(white, 0.6)};
+  --rk-cor-branco-50:   #{rk-alpha(white, 0.5)};
+  --rk-cor-branco-40:   #{rk-alpha(white, 0.4)};
+  --rk-cor-branco-30:   #{rk-alpha(white, 0.3)};
+  --rk-cor-branco-20:   #{rk-alpha(white, 0.2)};
+  --rk-cor-branco-10:   #{rk-alpha(white, 0.1)};
+
+  // Cinzas baseados no preto
+  --rk-cor-cinza-900:   #{rk-lighten(black, 5%)};
+  --rk-cor-cinza-800:   #{rk-lighten(black, 10%)};
+  --rk-cor-cinza-700:   #{rk-lighten(black, 20%)};
+  --rk-cor-cinza-600:   #{rk-lighten(black, 30%)};
+  --rk-cor-cinza-500:   #{rk-lighten(black, 40%)};
+  --rk-cor-cinza-400:   #{rk-lighten(black, 50%)};
+  --rk-cor-cinza-300:   #{rk-lighten(black, 60%)};
+  --rk-cor-cinza-200:   #{rk-lighten(black, 70%)};
+  --rk-cor-cinza-100:   #{rk-lighten(black, 80%)};
+}

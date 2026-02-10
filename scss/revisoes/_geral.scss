@@ -1,0 +1,42 @@
+.tab-content {
+    h5 {
+        margin: 15px 0;
+        font-size: 23px;
+    }
+
+    .periodo {
+        background-color: #d3d3d3 !important;
+
+        &.ativo {
+            background-color: #b2b2b2 !important;
+        }
+    }
+
+    .boxGrid {
+        margin: 25px 0;
+    }
+
+    .materia {
+        h4 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+    }
+
+    .progress {
+        height: 32px !important;
+        border-radius: 9px;
+
+        .progress-bar {
+            border-radius: 9px;
+        }
+    }
+
+    .valorPorcentagem {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}

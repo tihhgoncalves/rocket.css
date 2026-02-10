@@ -1,0 +1,72 @@
+@use "sass:meta";
+@use "sass:map";
+@use "../_breakpoints" as bp;
+
+// Valores possíveis de margem
+$margin-values: (
+  0: 0,
+  1: 4px,
+  2: 8px,
+  3: 16px,
+  4: 24px,
+  5: 48px,
+  6: 64px,
+  7: 80px,
+  8: 96px,
+  auto: auto
+);
+
+// Direções de margem ("" = todos os lados, "x" = left/right, etc.)
+$margin-directions: (
+  "": "",
+  "t": "-top",
+  "r": "-right",
+  "b": "-bottom",
+  "l": "-left",
+  "x": ("-left", "-right"),
+  "y": ("-top", "-bottom")
+);
+
+// Classes padrão (sem responsividade)
+@each $key, $value in $margin-values {
+  @each $dir, $suffix in $margin-directions {
+    .rk-m#{$dir}-#{$key} {
+      @if meta.type-of($suffix) == "list" {
+        @each $side in $suffix {
+          margin#{$side}: $value !important;
+        }
+      } @else {
+        margin#{$suffix}: $value !important;
+      }
+    }
+  }
+}
+
+// Responsivos com base no $rk-breakpoints
+@each $size, $range in bp.$rk-breakpoints {
+  $max: map.get($range, max); // Aqui, com map.get
+
+  @media (max-width: $max) {
+    @each $key, $value in $margin-values {
+      @each $dir, $suffix in $margin-directions {
+        .rk-m#{$dir}-#{$key}-#{$size} {
+          @if meta.type-of($suffix) == "list" {
+            @each $side in $suffix {
+              margin#{$side}: $value !important;
+            }
+          } @else {
+            margin#{$suffix}: $value !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// Utilitários extras
+.rk-push-right,
+.rk-ml-auto {
+  margin-left: auto !important;
+}

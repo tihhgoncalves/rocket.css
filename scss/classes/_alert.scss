@@ -1,0 +1,33 @@
+.rk-alert {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #fff;
+
+    &.rk-alert-verde {
+        background-color: var(--rk-cor-verde);
+    }
+
+    &.rk-alert-vermelho {
+        background-color: var(--rk-cor-vermelho-claro);
+        color: var(--rk-cor-preto);
+    }
+
+    &.rk-alert-azul {
+        background-color: var(--rk-cor-azul);
+        color: var(--rk-cor-preto);
+    }
+
+    &.rk-alert-amarelo {
+        background-color: var(--rk-cor-amarelo);
+        color: var(--rk-cor-preto);
+    }
+
+    &.rk-alert-roxo {
+        background-color: var(--rk-cor-roxo);
+        color: var(--rk-cor-preto);
+    }
+
+}

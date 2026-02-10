@@ -1,0 +1,119 @@
+@use "sass:map";
+@use "_breakpoints" as bp;
+
+$rk-grid-columns: 12;
+
+.rk-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; // espaçamento entre rows (opcional)
+}
+
+.rk-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 30px;
+  width: 100%;
+}
+
+// Gera colunas padrão
+@for $i from 1 through 12 {
+  .rk-col-#{$i} {
+    grid-column: span #{$i};
+  }
+}
+
+// Ordem invertida manualmente para garantir que xs sobreponha xl, lg, etc.
+$rk-breakpoints-order: (xxl, xl, lg, md, sm, xs);
+
+@each $size in $rk-breakpoints-order {
+  $range: map.get(bp.$rk-breakpoints, $size);
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @for $i from 1 through 12 {
+      .rk-col-#{$i}-#{$size} {
+        grid-column: span #{$i};
+      }
+    }
+  }
+}
+
+
+/** Alinhamentos das colunas **/
+.rk-col-center {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.rk-col-top {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+}
+
+.rk-col-bottom {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+}
+
+.rk-col-left {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+.rk-col-right {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+
+.rk-col-between {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+
+$rk-gaps: (
+  0: 0px,
+  1: 5px,
+  2: 10px,
+  3: 15px,
+  4: 20px,
+  5: 30px
+);
+
+// Gap padrão
+.rk-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: map.get($rk-gaps, 5); // padrão: 30px
+  width: 100%;
+}
+
+// Classes utilitárias fixas
+@each $key, $val in $rk-gaps {
+  .rk-gap-#{$key} {
+    gap: $val !important;
+  }
+}
+
+// Classes utilitárias responsivas
+@each $size, $range in bp.$rk-breakpoints {
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @each $key, $val in $rk-gaps {
+      .rk-gap-#{$key}-#{$size} {
+        gap: $val !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+@use "sass:map";
+
+
+// =====================================
+// Rocket.css - Breakpoints centralizados
+// =====================================
+
+// Mapa de breakpoints (min e max)
+$rk-breakpoints: (
+  xs: (min: 0px,      max: 767px),
+  sm: (min: 768px,    max: 991px),
+  md: (min: 992px,    max: 1199px),
+  lg: (min: 1200px,   max: 1399px),
+  xl: (min: 1400px,   max: 1599px),
+  xxl: (min: 1600px,  max: 10000px)
+);
+
+// =====================================
+// Funções auxiliares
+// =====================================
+
+@function rk-breakpoint-min($size) {
+  $range: map.get($rk-breakpoints, $size);
+  @return map.get($range, min);
+}
+
+@function rk-breakpoint-max($size) {
+  $range: map.get($rk-breakpoints, $size);
+  @return map.get($range, max);
+}
+
+
+// =====================================
+// Mixins por breakpoint
+// =====================================
+
+@mixin rk-media($size) {
+  $min: rk-breakpoint-min($size);
+  $max: rk-breakpoint-max($size);
+
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin rk-media-up($size) {
+  $min: rk-breakpoint-min($size);
+
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin rk-media-down($size) {
+  $max: rk-breakpoint-max($size);
+
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+
+
+// =====================================
+// Exemplo de uso:
+// =====================================
+// @include rk-media(md) { ... }          // min + max da faixa
+// @include rk-media-up(lg) { ... }       // só min-width
+// @include rk-media-down(sm) { ... }     // só max-width

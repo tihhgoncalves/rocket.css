@@ -1,0 +1,52 @@
+.filtros-componente {
+    position: relative;
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+
+    .linha {
+        display: flex;
+        max-width: 300px;
+        width: 300px;
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            flex: 1;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .col-100 {
+            flex: 0 0 100%;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .col-100-xs {
+            @at-root body.tela-xs & {
+                flex: 0 0 100%;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+    }
+}
+
+
+body.tela-xs {
+    .filtros-componente {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+
+        .linha{
+            width: 100%;
+            max-width: 100%;
+        }
+     
+    }
+
+}
