@@ -40,7 +40,7 @@ Depois importe no seu SCSS:
 Adicione no `<head>` do seu HTML:
 
 ```html
-<link rel="stylesheet" href="https://tihhgoncalves-rocket-css.vercel.app/rocket.min.css">
+<link rel="stylesheet" href="https://rocket-css.rocket.srv.br/rocket.min.css">
 ```
 
 ---
