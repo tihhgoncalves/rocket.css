@@ -4,12 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+const pkg = require('../../package.json');
 const outputFile = path.join(__dirname, '../../dist/rocket.css');
 const outputFileMin = path.join(__dirname, '../../dist/rocket.min.css');
 
 try {
   const timestamp = new Date().toLocaleString('pt-BR');
-  const buildComment = `/* Generated: ${timestamp} */\n`;
+  const buildComment = `/* Rocket.CSS v${pkg.version} - Build ${timestamp} */\n`;
 
   // Build não minificado
   console.log('🔨 Compilando SCSS (não minificado)...');
