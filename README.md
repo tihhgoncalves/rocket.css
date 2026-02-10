@@ -22,39 +22,57 @@ O **Rocket.CSS** é um framework SCSS completo e reutilizável que oferece:
 
 ---
 
-## 📥 Instalação
+## 📥 Como usar no seu projeto?
 
-### Via NPM
+### Opção 1: Via NPM
 
 ```sh
-npm install rocket.css
+npm install @tihhgoncalves/rocket.css
 ```
 
-### Importar no seu projeto
-
-**SCSS:**
+Depois importe no seu SCSS:
 ```scss
-@import 'rocket.css/dist/rocket.css';
+@import '@tihhgoncalves/rocket.css/dist/rocket.css';
 ```
 
-**HTML:**
+### Opção 2: Via CDN (sem instalação)
+
+Adicione no `<head>` do seu HTML:
+
 ```html
-<link rel="stylesheet" href="node_modules/rocket.css/dist/rocket.css">
+<link rel="stylesheet" href="https://tihhgoncalves-rocket-css.vercel.app/rocket.min.css">
 ```
 
+---
 
-## 🛠️ Desenvolvimento
+## 💡 Exemplo de Uso
 
-### Compilar SCSS
+```html
+<!-- Grid com 3 colunas responsivo -->
+<div class="rk-row">
+  <div class="rk-col-4-xs rk-col-4-sm rk-col-4-md">
+    <div class="card">
+      Card 1
+    </div>
+  </div>
+  
+  <div class="rk-col-4-xs rk-col-4-sm rk-col-4-md">
+    <div class="card">
+      Card 2
+    </div>
+  </div>
+  
+  <div class="rk-col-4-xs rk-col-4-sm rk-col-4-md">
+    <div class="card">
+      Card 3
+    </div>
+  </div>
+</div>
 
-```sh
-npm run sass:build
-```
-
-### Watch (desenvolvimento)
-
-```sh
-npm run sass:watch
+<!-- Alerts coloridos -->
+<div class="rk-alert rk-alert-verde">Sucesso!</div>
+<div class="rk-alert rk-alert-vermelho">Erro encontrado</div>
+<div class="rk-alert rk-alert-azul">Informação</div>
 ```
 
 ---
