@@ -1,0 +1,7 @@
+scss/
+.build/
+node_modules/
+.git/
+.gitignore
+*.md
+.editorconfig

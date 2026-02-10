@@ -1,12 +1,34 @@
 {
   "name": "rocket.css",
   "version": "1.0.0",
-  "description": "Projeto de Helpers de estilo CSS utilizado nos projetos da Rocket Produtora Digital",
+  "description": "Framework CSS/SCSS moderno com componentes, classes utilitárias, sistema de cores e layouts responsivos",
   "main": "dist/rocket.css",
   "scripts": {
     "sass:build": "node .build/scripts/sass-build.js",
     "sass:watch": "sass --load-path=node_modules --quiet-deps --silence-deprecation=import scss/index.scss css/rocket.css --watch"
   },
-  "author": "Tihh Gonçalves",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tihhgoncalves/rocket.css"
+  },
+  "homepage": "https://github.com/tihhgoncalves/rocket.css#readme",
+  "bugs": {
+    "url": "https://github.com/tihhgoncalves/rocket.css/issues"
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "framework",
+    "utility-classes",
+    "responsive",
+    "grid",
+    "components",
+    "sass",
+    "styling"
+  ],
+  "author": "Tihh Gonçalves <tihh.goncalves@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  }
 }
