@@ -9,7 +9,7 @@ const outputFile = path.join(__dirname, '../../dist/rocket.css');
 const outputFileMin = path.join(__dirname, '../../dist/rocket.min.css');
 
 try {
-  const timestamp = new Date().toLocaleString('pt-BR');
+  const timestamp = new Date().toLocaleString('pt-BR', { timeZoneName: 'shortOffset' });
   const buildComment = `/* Rocket.CSS v${pkg.version} - Build ${timestamp} */\n`;
 
   // Build não minificado
