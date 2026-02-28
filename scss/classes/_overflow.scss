@@ -1,0 +1,34 @@
+@use "sass:map";
+@use "../_breakpoints" as bp;
+
+// Mapas de valores de overflow
+$overflow-values: (
+  auto: auto,
+  hidden: hidden,
+  visible: visible,
+  scroll: scroll
+);
+
+// Classes padrão
+@each $key, $value in $overflow-values {
+  .rk-overflow-#{$key} {
+    overflow: #{$value} !important;
+  }
+}
+
+// Ordem dos breakpoints invertida para garantir que o menor (xs) venha por último no CSS
+$rk-breakpoints-order: (xxl, xl, lg, md, sm, xs);
+
+// Classes responsivas
+@each $size in $rk-breakpoints-order {
+  $range: map.get(bp.$rk-breakpoints, $size);
+  $max: map.get($range, max);
+
+  @media (max-width: $max) {
+    @each $key, $value in $overflow-values {
+      .rk-overflow-#{$key}-#{$size} {
+        overflow: #{$value} !important;
+      }
+    }
+  }
+}
